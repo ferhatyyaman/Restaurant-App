@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
 import { EvilIcons } from '@expo/vector-icons';
 
-export default function SearchBar({onTermChange}) {
+export default function SearchBar({onTermChange,onTermSubmit,term}) {
   return (
     <View style={styles.container}>
         <EvilIcons style={styles.icon} name="search" size={24} color="black" />
@@ -12,8 +12,9 @@ export default function SearchBar({onTermChange}) {
         placeholder='Ara' 
         autoCorrect={false} 
         autoCapitalize='none'
+        value={term}
         onChangeText={onTermChange}
-        onEndEditing={onTermSumit}
+        onEndEditing={onTermSubmit}
         />
      
     </View>

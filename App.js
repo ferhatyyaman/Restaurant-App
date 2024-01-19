@@ -4,13 +4,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SearchScreen from './screens/SearchScreen';
 import ResultsShowScreen from './screens/ResultsShowScreen';
+import SearchBar from './components/SearchBar';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator style={styles.container} screenOptions={{headerTitle: 'Restoran Uygulaması'}}>
+    <Stack.Navigator
+        screenOptions={{
+          headerTitle: ({ color }) => (
+            <View style={{ flex: 1, height: 100, backgroundColor: color }}>
+              <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Restoran Uygulaması</Text>
+              <SearchBar/>
+            </View>
+          ),
+        }}
+      > 
+       {/* <Stack.Navigator screenOptions={{headerTitle: 'Restoran Uygulaması'}}> */}
       <Stack.Screen name="Home" component={SearchScreen} />
       <Stack.Screen name="ResultsShow" component={ResultsShowScreen} />
     </Stack.Navigator>
@@ -24,6 +35,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    height:100,
-  },
+  }
 });
